@@ -73,6 +73,9 @@
 
 \XC@sdef\XC@mod@&spot{&spot}
 \def\color@&spot#1#2{%
+  \ifx\spc@ir\@undefined
+    \expandafter\spc@getref\current@color\@@
+  \fi
   \c@lor@arg{#2}%
   \edef#1{\spc@ir\space cs \spc@ir\space CS #2 sc #2 SC}}
 \def\XC@clr@&spot@white{0}
