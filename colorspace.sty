@@ -580,9 +580,12 @@
 \immediate\spc@Obj{<< /Type /ExtGState /op true /OP true /OPM 1 >>}%
 \edef\spc@tempa{\spc@tempa/SPCop \the\spc@Lastobj\space 0 R }%
 \immediate\spc@Obj{<< \spc@tempa>>}%
-\edef\spc@tempa{\global\spc@Pageresources{\the\spc@Pageresources
-  \space /ExtGState \the\spc@Lastobj\space 0 R }}
-\spc@tempa
+\edef\spc@op@saveobj{\the\spc@Lastobj}
+
+\AtBeginDocument{%
+  \edef\spc@tempa{\global\spc@Pageresources{\the\spc@Pageresources
+    \space /ExtGState \spc@op@saveobj\space 0 R }}%
+  \spc@tempa}
 
 \def\spc@setop{%
   \spc@Colorstack\spc@opstack push{\spc@getop}%
