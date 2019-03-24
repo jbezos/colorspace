@@ -49,7 +49,7 @@
   \protected\def\spc@Colorstack{\pdfextension colorstack}
   \def\spc@Colorstackinit{\pdffeedback colorstackinit}
 \fi
- 
+
 \def\spc@unknown#1#2{%
   \@ifundefined{#1}%
     {\PackageError{colorspace}{Unknown #2}%
@@ -149,7 +149,7 @@
   \def\spc@tempd##1,{% comma -> space
     \ifx\@empty##1\else##1 \expandafter\spc@tempd\fi}%
   \edef\spc@lab@values{\expandafter\spc@tempd\spc@lab@values,\@empty,}}
- 
+
 \def\spc@defsc@i#1#2#3#4{%
   \def\spc@tempc##1 ##2{% Converts spaces to #20
     ##1%
@@ -186,8 +186,16 @@
   \let\spc@elt\relax
   \xdef\spc@csall{\spc@csall\spc@elt2{#1}}}
 
+% The pgf stuff *must* go before \resetpagecolorspace
 \AtBeginDocument{%
-  \ifx\spc@csall\@empty\else % ie, if spot/iccbased colors
+  \ifx\spc@csall\@empty\else % ie, if spot/iccbased colors only
+    \ifx\pgf@sys@pgf@resource@list@colorspaces\@undefined\else
+      \def\spc@everycs{\pgf@sys@pgf@resource@list@colorspaces}%
+      \edef\spc@tempa{% Remove pgf "static" ColorSpace 
+        \noexpand\spc@remcs\the\spc@Pageresources
+        \noexpand\spc@remcs{\pgf@sys@pdf@colrospaces@objnum}}%
+      \spc@tempa
+    \fi
     \resetpagecolorspace
   \fi}
 
@@ -207,7 +215,7 @@
 \DeclareOption{illuminant=d55}{\spc@illum@obj{0.9568 1 0.9214}}
 \DeclareOption{illuminant=d65}{\spc@illum@obj{0.9504 1 1.0888}}
 \DeclareOption{illuminant=d75}{\spc@illum@obj{0.9497 1 1.2261}}
- 
+
 % Page color spaces. The arrays mapping the spot colors to the obj
 % refs are saved into the pdf as objects, and then we also save its
 % reference for later recovery. Well, \pdfpageresources is not
@@ -221,16 +229,18 @@
 \let\spc@currcs\@empty
 \let\spc@cs@\@empty
 
+\let\spc@everycs\@empty
+
 \newcommand\pagecolorspace[1]{%
   \protected@edef\spc@tempa{{#1}}%
   \expandafter\spc@pagecs\spc@tempa}
 
 \def\spc@pagecs#1{%
   \ifx\spc@currcs\@empty\else
-    \edef\tempa{%
+    \edef\spc@tempa{%
       \noexpand\spc@remcs\the\spc@Pageresources
       \noexpand\spc@remcs{\spc@currcs}}%
-    \tempa
+    \spc@tempa
   \fi
   \let\spc@tempd\@empty % list with known spaces
   \@for\spc@tempa:=#1\do{%
@@ -251,7 +261,7 @@
     \fi}%
   \spc@csall % Uses \spc@elt
   \@ifundefined{spc@cs@\spc@tempc}%
-    {\immediate\spc@Obj{<< \spc@tempb>>}%
+    {\immediate\spc@Obj{<< \spc@everycs\space\spc@tempb>>}%
      \expandafter\xdef\csname spc@cs@\spc@tempc\endcsname{\the\spc@Lastobj}}%
     {}%
   \expandafter\let\expandafter\spc@currcs\csname spc@cs@\spc@tempc\endcsname
@@ -536,7 +546,6 @@
     \expandafter\xdef\csname spc@ir@#1\endcsname{%
       /Default\spc@@space\space\the\spc@Lastobj\space 0 R}% 
   \endgroup}
-
 
 % ==== Overprint/Knokout ====
 
