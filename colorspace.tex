@@ -1,32 +1,20 @@
-% +--------------------------------------------------+
-% | Typeset this file to get the documentation.      |
-% +--------------------------------------------------+
 %
-%% Copyright (C) 2015-2016 Javier Bezos
-%% All Rights Reserved
-%% http://www.texnia.com
-%%
-%% This work may be distributed and/or modified under the conditions
-%% of the LaTeX Project Public License, either version 1.3 of this
-%% license or (at your option) any later version.  The latest version
-%% of this license is in
-%%     http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2003/12/01 or later.
-%%
-%% This work has the LPPL maintenance status "maintained".
-%%
-%% This Current Maintainer of this work is Javier Bezos.
-%%
-%% This work consists of the files colorspace.tex and colorspace.sty.
+% Copyright (C) 2015-2019 Javier Bezos http://www.texnia.com
+%
+% This file may be distributed and/or modified under the conditions of
+% the MIT License. A version can be found at the end of this file.
+%
+% Repository: https://github.com/jbezos/colorspace
+%
+
 \documentclass[a4paper]{ltxguide}
 
-\title{\textsf{colorspace}\\\large Version 1.2.0}
+\title{\textsf{colorspace}\\\large Version 1.3}
 
 \author{Javier Bezos\\\texttt{http://www.texnia.com}}
 
-\date{2016-10-05}
-   
+\date{2019-03-25}
+
 \raggedright
 \parskip=.8ex
 \advance\oddsidemargin-.7cm
@@ -78,7 +66,7 @@
 {\fontsize{48}{48}\selectfont colorspace\par}
 {\LARGE Spot colors, mixed inks and more\par}
 \vspace*{1ex}
-Version 1.2.0 (2016-10-05)\par
+Version 1.3 (2019-03-25)\par
 Javier Bezos (\texttt{http://www.texnia.com})
 
 \vspace*{6ex}
@@ -119,7 +107,9 @@ Heiko Oberdiek.
 
 This package is still evolving, but the basic behaviour described here
 will be preserved in future versions. However, some functions from
-\textsf{xcolor} might not work yet (for example \verb|\selectcolormodel|).
+\textsf{xcolor} might not work yet (for example
+\verb|\selectcolormodel| and the corresponding package options |cmyk|
+and the like).
 
 Declarations are global and should go in the preamble.
 
@@ -510,7 +500,6 @@ particular example) equivalent:
 \resetpagecolorspace
 \end{verbatim}
 
-
 \end{example}
 
 \section{Overprinting}
@@ -547,11 +536,28 @@ Since the color stack is used, pdf\TeX{} $\ge$ 1.40 is required.
 
 1.2.0. CIE LAB spot colors and |illuminant|. Manual rewritten.
 
+1.3. Fixes several incompatibilities with \textsf{pgf}/\textsf{tikz}. 
+
 \end{document}
 
+MIT License
+-----------
 
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
-
-
-
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

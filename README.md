@@ -1,5 +1,4 @@
-colorspace
------------
+## colorspace
 
 This package provides some tools related to PDF color spaces and color
 management. It requires xcolor, which is loaded if it has not been
@@ -20,10 +19,20 @@ For example, to define a spot color, just say something like:
 
 That's all.
 
-What's new
-----------
+### Latest changes
 
-* 1.2.0 CIE LAB spot colors (including mixed inks with a CMYK alternative)
+```
+* 1.3   Fixes several incompatibilities with pgf/tikz
+* 1.2.0 CIE LAB spot colors (including mixed inks with a
+        CMYK alternative)
 * 1.1.1 is compatible with luatex 0.95
+```
 
-2016-10-05
+License:     MIT
+
+Repository:  https://github.com/jbezos/colorspace
+
+________
+Javier Bezos --- http://www.texnia.com
+
+2019-03-25

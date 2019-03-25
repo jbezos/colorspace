@@ -1,28 +1,13 @@
-% +--------------------------------------------------+
-% | Typeset colorspace.tex to get the documentation.   |
-% +--------------------------------------------------+
 %
-%% Copyright (C) 2015-2016 Javier Bezos
-%% All Rights Reserved
-%% http://www.texnia.com
-%%
-%% This work may be distributed and/or modified under the conditions
-%% of the LaTeX Project Public License, either version 1.3 of this
-%% license or (at your option) any later version.  The latest version
-%% of this license is in
-%%     http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2003/12/01 or later.
-%%
-%% This work has the LPPL maintenance status "maintained".
-%%
-%% This Current Maintainer of this work is Javier Bezos.
-%%
-%% This work consists of the files colorspace.tex and colorspace.sty.
+% Copyright (C) 2015-2019 Javier Bezos http://www.texnia.com
+%
+% This file may be distributed and/or modified under the conditions of
+% the MIT License. A version can be found at the end of this file.
+%
+% Repository: https://github.com/jbezos/colorspace
+%
 
-\ProvidesPackage{colorspace}
-          [2016/10/05 v1.2.0 PDF color spaces (spot colors...) for
-          pdftex and luatex]
+\ProvidesPackage{colorspace}[2019/03/25 v1.3 PDF color spaces]
 
 \edef\spc@savedcatcodes{%
   \catcode`\noexpand\/=\the\catcode`\/
@@ -605,3 +590,25 @@
 \spc@savedcatcodes
 
 \endinput
+
+MIT License
+-----------
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
